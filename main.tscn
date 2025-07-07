@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://8ednuqo5mpx7"]
+
+[ext_resource type="PackedScene" uid="uid://b0o8dtylckrvg" path="res://Characters/Player/player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://b1qbonwq4n2ni" path="res://Objects/Boulder/boulder.tscn" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://ku2bhvmh3yeu" path="res://UserInterface/GameWorld/Tablet.tscn" id="3_h2yge"]
+
+[node name="MainNode" type="Node2D"]
+
+[node name="Environment" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Environment" instance=ExtResource("1_0xm2m")]
+position = Vector2(160, 96)
+
+[node name="Boulder" parent="Environment" instance=ExtResource("2_h2yge")]
+position = Vector2(240, 112)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Tablet" parent="UI" instance=ExtResource("3_h2yge")]

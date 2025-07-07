@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://ku2bhvmh3yeu"]
+
+[ext_resource type="Texture2D" uid="uid://b1hck1unmqqv1" path="res://Arts/UI/Tablet/TabletBG.png" id="1_6o00m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.95
+anchor_top = 0.95
+anchor_right = 0.95
+anchor_bottom = 0.95
+offset_left = -144.0
+offset_top = -191.92
+offset_right = 47.9999
+offset_bottom = 64.08
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_6o00m")
