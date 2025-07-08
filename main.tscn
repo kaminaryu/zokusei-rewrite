@@ -19,4 +19,3 @@ position = Vector2(240, 112)
 
 [node name="Tablet" parent="UI" instance=ExtResource("3_h2yge")]
 visible = false
-mouse_filter = 2

@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
     if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_entered:
         UIHandler.change_ui("Tablet")
         Obama.display_attribute(self)
-
+        get_viewport().set_input_as_handled() # mark the input as handled (hint : ui-handler.gd; tablet.gd)
 
 
 func _on_interact_range_body_entered(body: Node2D) -> void:
