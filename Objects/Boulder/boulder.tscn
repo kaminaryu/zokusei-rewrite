@@ -28,5 +28,15 @@ shape = SubResource("RectangleShape2D_t5gur")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractRange"]
 shape = SubResource("CircleShape2D_sju0o")
 
+[node name="MouseCollider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseCollider"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_t5gur")
+
+[connection signal="mouse_entered" from="Hitbox" to="." method="_on_hitbox_mouse_entered"]
+[connection signal="mouse_exited" from="Hitbox" to="." method="_on_hitbox_mouse_exited"]
 [connection signal="body_entered" from="InteractRange" to="." method="_on_interact_range_body_entered"]
 [connection signal="body_exited" from="InteractRange" to="." method="_on_interact_range_body_exited"]
+[connection signal="mouse_entered" from="MouseCollider" to="." method="_on_mouse_collider_mouse_entered"]
+[connection signal="mouse_exited" from="MouseCollider" to="." method="_on_mouse_collider_mouse_exited"]
