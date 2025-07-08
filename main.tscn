@@ -15,6 +15,13 @@ position = Vector2(160, 96)
 [node name="Boulder" parent="Environment" instance=ExtResource("2_h2yge")]
 position = Vector2(240, 112)
 
+[node name="Boulder2" parent="Environment" instance=ExtResource("2_h2yge")]
+position = Vector2(184, 192)
+attributes = {
+"Collision": false,
+"idk": false
+}
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Tablet" parent="UI" instance=ExtResource("3_h2yge")]

@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed := 400;
+@export var speed := 300;
 
 func _process(delta: float) -> void: 
     velocity = Vector2(0, 0);

@@ -17,6 +17,7 @@ func change_ui(ui: String, show = null) -> void:
         
     current_ui.visible = ui_visibility[ui]
 
+
 # for inputs that doesnt get detected (e.g: click on blank space)
 # if the user click on somewhere random => closes the tablet
 func _unhandled_input(event: InputEvent) -> void:
@@ -24,7 +25,4 @@ func _unhandled_input(event: InputEvent) -> void:
         return
     
     if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-        ui_visibility["Tablet"] = false
-        $"/root/MainNode/UI/Tablet".visible = false
-        print("die")
-    
+        change_ui("Tablet", false)

@@ -10,14 +10,26 @@ var player_entered := false;
 var mouse_entered  := false;
 var toggle := true
 
+# set the attributes to the dev defined attributes
+func _ready() -> void:
+    for attr in attributes :
+        Obama.change_attr(self, attr, false)
+    
+    
+# this is a must have to update the attributes from outside
+func update_attr(attr: String, new_value) :
+    print("old: ", attributes[attr])
+    attributes[attr] = new_value
+    print("new: ", attributes[attr])
+    
     
 func _input(event: InputEvent) -> void:
     if not event is InputEventMouseButton :
         return
         
-    if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_entered:
+    if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_entered and player_entered:
         UIHandler.change_ui("Tablet")
-        Obama.display_attribute(self)
+        Obama.activate_tablet(self)
         get_viewport().set_input_as_handled() # mark the input as handled (hint : ui-handler.gd; tablet.gd)
 
 
