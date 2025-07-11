@@ -27,8 +27,9 @@ func _input(event: InputEvent) -> void:
     if not event is InputEventMouseButton :
         return
         
-    if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and mouse_entered and player_entered:
-        UIHandler.change_ui("Tablet")
+    # if click on object and player in range
+    if (event.button_index == MOUSE_BUTTON_LEFT and event.pressed) and (mouse_entered and player_entered):
+        UIHandler.change_ui("Tablet", self)
         Obama.activate_tablet(self)
         get_viewport().set_input_as_handled() # mark the input as handled (hint : ui-handler.gd; tablet.gd)
 
@@ -44,6 +45,7 @@ func _on_interact_range_body_exited(body: Node2D) -> void:
        return;
     
     player_entered = false;
+    UIHandler.change_ui("Tablet", self, false)
 
 
 func _on_mouse_collider_mouse_entered() -> void:
