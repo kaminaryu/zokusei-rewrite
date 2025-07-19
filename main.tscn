@@ -1,22 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://8ednuqo5mpx7"]
+[gd_scene load_steps=5 format=3 uid="uid://8ednuqo5mpx7"]
 
 [ext_resource type="PackedScene" uid="uid://b0o8dtylckrvg" path="res://Characters/Player/player.tscn" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://ca0pmuwnbccva" path="res://Maps/map_gen.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b1qbonwq4n2ni" path="res://Objects/Boulder/boulder.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ku2bhvmh3yeu" path="res://UserInterface/GameWorld/Tablet.tscn" id="3_h2yge"]
 
 [node name="MainNode" type="Node2D"]
 
+[node name="MapGen" parent="." instance=ExtResource("1_1bvp3")]
+
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Player" parent="Environment" instance=ExtResource("1_0xm2m")]
-position = Vector2(160, 96)
+position = Vector2(312, 160)
 
 [node name="Boulder" parent="Environment" instance=ExtResource("2_h2yge")]
-position = Vector2(240, 112)
+position = Vector2(392, 176)
 
 [node name="Boulder2" parent="Environment" instance=ExtResource("2_h2yge")]
-position = Vector2(184, 192)
+position = Vector2(336, 256)
 attributes = {
 "Collision": false,
 "idk": false
