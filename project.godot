@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 UIHandler="*res://Autoload/ui-handler.gd"
 Obama="*res://Autoload/obama.gd"
+MapHandler="*res://Autoload/map_handler.gd"
 
 [display]
 

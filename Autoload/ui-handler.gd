@@ -37,6 +37,14 @@ func change_ui(ui: String, caller: Node = null, show = null) -> void:
             activator = null
 
 
+func activate_transition() :
+    var black_screen: Node = get_node("/root/MainNode/UI/BlackScreen")
+    black_screen.visible = true
+    black_screen.get_node("AnimationPlayer").play("Transition")
+    
+    
+    
+# Closing UI with escape key, usually for tablet
 func _input(event: InputEvent) -> void:
     if not event.is_action_pressed("escape"):
         return

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://8ednuqo5mpx7"]
+[gd_scene load_steps=6 format=3 uid="uid://8ednuqo5mpx7"]
 
 [ext_resource type="PackedScene" uid="uid://b0o8dtylckrvg" path="res://Characters/Player/player.tscn" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://ca0pmuwnbccva" path="res://Maps/map_gen.tscn" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://b1qbonwq4n2ni" path="res://Objects/Boulder/boulder.tscn" id="2_h2yge"]
 [ext_resource type="PackedScene" uid="uid://ku2bhvmh3yeu" path="res://UserInterface/GameWorld/Tablet.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bh0sjghwms618" path="res://UserInterface/GameWorld/black_screen.tscn" id="5_lquwl"]
 
 [node name="MainNode" type="Node2D"]
 
@@ -28,4 +29,7 @@ attributes = {
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Tablet" parent="UI" instance=ExtResource("3_h2yge")]
+visible = false
+
+[node name="BlackScreen" parent="UI" instance=ExtResource("5_lquwl")]
 visible = false

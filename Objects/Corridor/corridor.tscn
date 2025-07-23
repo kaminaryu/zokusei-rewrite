@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpeeblmlkw5ao"]
+
+[ext_resource type="Texture2D" uid="uid://oimo6qqckj5g" path="res://Arts/Objects/Corridor.png" id="1_ji2ce"]
+[ext_resource type="Script" uid="uid://c2u0ub1h0vnfs" path="res://Objects/Corridor/corridor.gd" id="1_oaqkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaqkq"]
+size = Vector2(64, 32)
+
+[node name="Corridor" type="Node2D"]
+script = ExtResource("1_oaqkq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ji2ce")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_oaqkq")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
