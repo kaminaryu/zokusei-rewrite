@@ -18,14 +18,3 @@ func _ready() :
 
     # generate default map / main map
     MapHandler.init_paths(map_paths)
-    MapHandler.shift_current_room(0, 0)
-        
-    
-#func change_node(new_node) :
-    #current_node_id = new_node
-
-
-func _input(evt) :
-    if evt.is_action_pressed("change-map") :
-        MapHandler.shift_current_room(1, 0)
-        UIHandler.activate_transition()

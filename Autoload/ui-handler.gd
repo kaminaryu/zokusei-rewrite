@@ -40,7 +40,9 @@ func change_ui(ui: String, caller: Node = null, show = null) -> void:
 func activate_transition() :
     var black_screen: Node = get_node("/root/MainNode/UI/BlackScreen")
     black_screen.visible = true
-    black_screen.get_node("AnimationPlayer").play("Transition")
+    black_screen.get_node("AnimationPlayer").play("FadeIn")
+    MapHandler.disabled = true
+    get_node("/root/MainNode/Environment/Player").disabled = true
     
     
     

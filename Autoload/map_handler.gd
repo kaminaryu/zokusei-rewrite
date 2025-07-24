@@ -4,30 +4,54 @@ var active_map_path: String = "res://Maps/one.tscn"
 var active_map_node: Node = null
 var map_paths: Dictionary
 var current_room_coords := Vector2(0, 0)
-var disabled := false
+var new_player_pos: Vector2
+var map: Node
 
+@export var disabled := false
+@onready var env_node: Node = get_tree().root.get_node("/root/MainNode/Environment")
+@onready var player: Node = env_node.get_node("Player")
+
+
+# called in map_gen.gd
 func init_paths(mp) :
     map_paths = mp
+    # create the default room
+    var map = load(map_paths[Vector2(0, 0)]).instantiate()
+    env_node.call_deferred("add_child", map)
+    active_map_node = map
 
-func shift_current_room(x_shift: int, y_shift: int) :
+
+func shift_room_coords(x_shift: int, y_shift: int) :
     if disabled :
-        print("Node is disabled")
+        print("Node is disabled") # prevent from running twice
         return
-        
-    if active_map_node :
-        active_map_node.queue_free()
-    
-    #print("Changing room with shift: ", x_shift, " ", y_shift)
+
+    # shift the room coords
     current_room_coords += Vector2(x_shift, y_shift)
     
-    var map = load(map_paths[current_room_coords]).instantiate()
-    get_tree().root.get_node("/root/MainNode/Environment").add_child(map)
+    map = load(map_paths[current_room_coords]).instantiate()
     
+    # move the player
+    var map_size = map.get_used_rect().size
+    new_player_pos = player.position # will be overwritten
+    if x_shift == 1 :
+        new_player_pos.x = 64
+    elif x_shift == -1 :
+        new_player_pos.x = map_size.x * 32 - 64
+    elif y_shift == 1 :
+        new_player_pos.y = 64
+    elif y_shift == -1 :
+        new_player_pos.y = map_size.y * 32 - 64
+    
+    UIHandler.activate_transition() 
+    
+        
+# calls after FadeIn Transition Animation is finished
+func shift_room() : 
+    print("NPP: ", new_player_pos)
+    player.position = new_player_pos
+    
+    # delete the old room and create a new one
+    active_map_node.queue_free()
+    env_node.call_deferred("add_child", map)
     active_map_node = map
-    print(x_shift, " ", y_shift)
-    if !(x_shift == 0 and y_shift == 0) :
-        print("its now diasbled")
-        disabled = true
-        await get_tree().create_timer(0.5).timeout # ts will be replaced by a transition anim anyway lol....................................................
-        disabled = false
-        print("enabled again lol")
