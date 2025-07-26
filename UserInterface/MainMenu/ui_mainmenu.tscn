@@ -1,0 +1,83 @@
+[gd_scene load_steps=6 format=3 uid="uid://g4cy0opwk72h"]
+
+[ext_resource type="Texture2D" uid="uid://c6jsvh1y8blvh" path="res://UserInterface/MainMenu/ui/0.png" id="1_xn2lm"]
+[ext_resource type="Texture2D" uid="uid://cctbwwpkhcbik" path="res://UserInterface/MainMenu/ui/1.png" id="2_hjw5c"]
+[ext_resource type="Texture2D" uid="uid://327q4lei6xhf" path="res://UserInterface/MainMenu/ui/2.png" id="3_quaha"]
+[ext_resource type="Texture2D" uid="uid://c8ebwi2g85p51" path="res://UserInterface/MainMenu/ui/title.png" id="4_hjw5c"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_vxerc"]
+frames = 3
+frame_0/texture = ExtResource("1_xn2lm")
+frame_1/texture = ExtResource("2_hjw5c")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_quaha")
+frame_2/duration = 1.0
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BG" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_vxerc")
+
+[node name="GameTitle" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.213889
+anchor_right = 0.5
+anchor_bottom = 0.213889
+offset_left = -225.0
+offset_top = -55.0
+offset_right = 225.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_hjw5c")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.362438
+anchor_top = 0.431
+anchor_right = 0.637563
+anchor_bottom = 0.925
+offset_left = 0.0399933
+offset_top = -0.160004
+offset_right = -0.0400085
+offset_bottom = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.84
+text = "遊ぶ"
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.84
+text = "設定"
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.84
+text = "終了"
