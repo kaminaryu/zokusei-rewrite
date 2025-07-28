@@ -12,9 +12,6 @@ func _ready() :
     for node in get_children() :
         # map_paths[node.map_id] = node.map_path # idk if ID is gonna be used, leaving it be for now
         map_paths[node.position / 32] = node.map_path
-        print(node.map_id, " ", node.position)
-        
-    print("Map: ", map_paths)
 
     # generate default map / main map
     MapHandler.init_paths(map_paths)

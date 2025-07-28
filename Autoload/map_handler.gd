@@ -8,22 +8,26 @@ var new_player_pos: Vector2
 var map: Node
 
 @export var disabled := false
-@onready var env_node: Node = get_tree().root.get_node("/root/MainNode/Environment")
-@onready var player: Node = env_node.get_node("Player")
+var env_node: Node
+var player: Node 
 
 
 # called in map_gen.gd
 func init_paths(mp) :
+    env_node = get_tree().root.get_node("/root/MainNode/Environment")
+    player = env_node.get_node("Player")
+    
     map_paths = mp
+    
     # create the default room
     var map = load(map_paths[Vector2(0, 0)]).instantiate()
     env_node.call_deferred("add_child", map)
     active_map_node = map
-
-
+    
+    
 func shift_room_coords(x_shift: int, y_shift: int) :
     if disabled :
-        print("Node is disabled") # prevent from running twice
+        # prevent from running twice
         return
 
     # shift the room coords
@@ -41,14 +45,13 @@ func shift_room_coords(x_shift: int, y_shift: int) :
     elif y_shift == 1 :
         new_player_pos.y = 64
     elif y_shift == -1 :
-        new_player_pos.y = map_size.y * 32 - 64
+        new_player_pos.y = map_size.y * 32 - 80
     
     UIHandler.activate_transition() 
     
         
 # calls after FadeIn Transition Animation is finished
 func shift_room() : 
-    print("NPP: ", new_player_pos)
     player.position = new_player_pos
     
     # delete the old room and create a new one

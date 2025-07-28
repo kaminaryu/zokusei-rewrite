@@ -15,7 +15,6 @@ func _on_area_2d_body_entered(player: Node2D) -> void:
     # THIS IS DUMB, but im lazy, so itll stay and be future's problem
     # Check the door rotation for direction lol
     # As long as the corridors rotation are within [-90, 180], everything will be fine
-    print("changing, rotation: ", rot_deg)
     if rot_deg == 0 : #up
         MapHandler.shift_room_coords(0, -1)
         

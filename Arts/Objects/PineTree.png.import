@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cs7wrpgkth1ug"
-path="res://.godot/imported/fg.png-b93e56b13b3c1d9fe641ca1d0618d856.ctex"
+uid="uid://dqohr2uuupdad"
+path="res://.godot/imported/PineTree.png-1370c51740e3464bb6f79764156fcd52.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://UserInterface/MainMenu/ui/fg.png"
-dest_files=["res://.godot/imported/fg.png-b93e56b13b3c1d9fe641ca1d0618d856.ctex"]
+source_file="res://Arts/Objects/PineTree.png"
+dest_files=["res://.godot/imported/PineTree.png-1370c51740e3464bb6f79764156fcd52.ctex"]
 
 [params]
 

@@ -18,9 +18,7 @@ func _ready() -> void:
     
 # this is a must have to update the attributes from outside
 func update_attr(attr: String, new_value) :
-    print("old: ", attributes[attr])
     attributes[attr] = new_value
-    print("new: ", attributes[attr])
     
     
 func _input(event: InputEvent) -> void:

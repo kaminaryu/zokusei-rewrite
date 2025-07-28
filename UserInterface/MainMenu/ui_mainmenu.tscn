@@ -1,17 +1,129 @@
-[gd_scene load_steps=6 format=3 uid="uid://g4cy0opwk72h"]
+[gd_scene load_steps=16 format=3 uid="uid://g4cy0opwk72h"]
 
-[ext_resource type="Texture2D" uid="uid://c6jsvh1y8blvh" path="res://UserInterface/MainMenu/ui/0.png" id="1_xn2lm"]
-[ext_resource type="Texture2D" uid="uid://cctbwwpkhcbik" path="res://UserInterface/MainMenu/ui/1.png" id="2_hjw5c"]
-[ext_resource type="Texture2D" uid="uid://327q4lei6xhf" path="res://UserInterface/MainMenu/ui/2.png" id="3_quaha"]
-[ext_resource type="Texture2D" uid="uid://c8ebwi2g85p51" path="res://UserInterface/MainMenu/ui/title.png" id="4_hjw5c"]
+[ext_resource type="Script" uid="uid://cf078x3013hiu" path="res://UserInterface/MainMenu/ui_mainmenu.gd" id="1_quaha"]
+[ext_resource type="Texture2D" uid="uid://c6jsvh1y8blvh" path="res://Arts/UI/MainMenu/0.png" id="1_xn2lm"]
+[ext_resource type="Texture2D" uid="uid://cctbwwpkhcbik" path="res://Arts/UI/MainMenu/1.png" id="2_hjw5c"]
+[ext_resource type="Texture2D" uid="uid://327q4lei6xhf" path="res://Arts/UI/MainMenu/2.png" id="3_quaha"]
+[ext_resource type="Texture2D" uid="uid://c8ebwi2g85p51" path="res://Arts/UI/MainMenu/title.png" id="4_hjw5c"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_vxerc"]
 frames = 3
+speed_scale = 5.0
 frame_0/texture = ExtResource("1_xn2lm")
 frame_1/texture = ExtResource("2_hjw5c")
 frame_1/duration = 1.0
 frame_2/texture = ExtResource("3_quaha")
 frame_2/duration = 1.0
+
+[sub_resource type="Animation" id="Animation_vxerc"]
+resource_name = "Move"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Vector2(95, 115), Vector2(95, 26)]
+}
+
+[sub_resource type="Animation" id="Animation_jb4g8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(95, 115)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c1050"]
+_data = {
+&"Move": SubResource("Animation_vxerc"),
+&"RESET": SubResource("Animation_jb4g8")
+}
+
+[sub_resource type="Animation" id="Animation_hjw5c"]
+resource_name = "Blinking"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_quaha"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vxerc"]
+_data = {
+&"Blinking": SubResource("Animation_hjw5c"),
+&"RESET": SubResource("Animation_quaha")
+}
+
+[sub_resource type="Animation" id="Animation_c1050"]
+resource_name = "FadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.25, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1l47s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l47s"]
+_data = {
+&"FadeIn": SubResource("Animation_c1050"),
+&"RESET": SubResource("Animation_1l47s")
+}
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -20,6 +132,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_quaha")
 
 [node name="BG" type="TextureRect" parent="."]
 texture_filter = 1
@@ -31,24 +144,51 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_vxerc")
 
-[node name="GameTitle" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 0.213889
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.213889
+anchor_bottom = 0.5
 offset_left = -225.0
-offset_top = -55.0
+offset_top = -65.0
 offset_right = 225.0
-offset_bottom = 55.0
+offset_bottom = 45.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_hjw5c")
-metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TitleMove" type="AnimationPlayer" parent="Title"]
+libraries = {
+&"": SubResource("AnimationLibrary_c1050")
+}
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.5
+offset_top = -132.0
+offset_right = 89.5
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press Start to Continue"
+
+[node name="Blinking" type="AnimationPlayer" parent="Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_vxerc")
+}
+autoplay = "Blinking"
+
+[node name="Menus" type="VBoxContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.362438
@@ -64,20 +204,25 @@ grow_vertical = 2
 theme_override_constants/separation = 15
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="Button" type="Button" parent="Menus"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 15.84
 text = "遊ぶ"
 
-[node name="Button2" type="Button" parent="VBoxContainer"]
+[node name="Button2" type="Button" parent="Menus"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 15.84
 text = "設定"
 
-[node name="Button3" type="Button" parent="VBoxContainer"]
+[node name="Button3" type="Button" parent="Menus"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 15.84
 text = "終了"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menus"]
+libraries = {
+&"": SubResource("AnimationLibrary_1l47s")
+}
